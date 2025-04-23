@@ -171,7 +171,7 @@ lark==1.2.2
 legacy-api-wrap==1.4
 libclang==18.1.1
 lightning-utilities==0.11.3.post0
-litellm==1.53.7
+litellm==1.61.15
 littleutils==0.2.2
 llvmlite==0.43.0
 lm-format-enforcer==0.10.9
