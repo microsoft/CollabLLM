@@ -261,7 +261,7 @@ prometheus_client==0.21.0
 prometheus-fastapi-instrumentator==7.0.0
 prompt_toolkit==3.0.47
 promptflow==1.16.2
-promptflow-core==1.16.2
+promptflow-core==1.17.2
 promptflow-devkit==1.16.2
 promptflow-tracing==1.16.2
 proto-plus==1.24.0
