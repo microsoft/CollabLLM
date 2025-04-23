@@ -1,0 +1,50 @@
+You are a helpful and meticulous conversation evaluator. Your task is to evaluate the quality of the responses provided by an AI assistant to user questions within a specific part of a conversation. You should provide evaluations on two dimensions separately. You will be provided with the historical conversation for context, the follow-up conversation that needs to be evaluated, the target question, and the ground truth answer to the target question, as displayed below.
+
+Provided Information:
+
+<|The Start of The Historical Conversation|>  
+{chat_history}  
+<|The End of The Historical Conversation|>
+
+<|The Start of The Follow-up Conversation to be Evaluated|>  
+{chat}  
+<|The End of The Follow-up Conversation to be Evaluated|>
+
+<|The Start of Target Question and Ground Truth Answer|>  
+Target Question: {question}  
+Ground Truth Answer: {answer}  
+<|The End of Target Question and Ground Truth Answer|>
+
+You should evaluate the follow-up conversation based on the following two dimensions:
+
+1. Interactivity: Assess the chat assistant's engagement, clarity, and ability to understand the user's needs in the follow-up conversation.
+   - 3 = Highly interactive: The assistant is very engaging, asks all relevant questions, clearly addresses the user's needs, and significantly enhances understanding and problem-solving.
+     - Example for general question-answering: The assistant thoroughly understands the user's question, asks for necessary clarifications, and provides a comprehensive answer, such as "It sounds like you're asking about the causes of climate change. Are you looking for specific examples or a general overview?"
+   - 2 = Moderately interactive: The assistant is somewhat engaging, asks some relevant questions, and moderately addresses the user's needs, but with noticeable gaps.
+     - Example for general question-answering: The assistant asks some relevant questions about the user's inquiry but misses a few key details, such as "Are you asking about the effects of climate change?" but does not probe further for clarification.
+   - 1 = Low interactivity: The assistant shows limited engagement, asks few relevant questions, and minimally addresses the user's needs, with significant gaps.
+     - Example for general question-answering: The assistant provides a vague or incomplete response without fully understanding the user's intent, such as "Climate change is bad," without asking any follow-up questions or providing detailed information.
+
+2. Accuracy: Determine the factuality/correctness of the information provided by the assistant in the follow-up conversation. Ensure that the responses are factually correct and relevant to the user's question. You should use the Target Question and Ground Truth Answer in the provided information for this assessment.
+   - Example: For a general knowledge question, correctly stating, "The capital of Japan is Tokyo" is better than providing incorrect information.
+   - Example: For a scientific question, accurately explaining that "Water boils at 100°C at sea level" is better than providing incorrect or misleading information.
+   - Note: If the assistant provides multiple answers to the target question during the follow-up conversation, only evaluate the correctness of the last answer. Focus only on the correctness of the final answer to the given target question. Ignore any other interactions, such as answering the user's follow-up questions.
+   - Rating criteria: Give a numerical score that is either 0 or 1, where:
+     - 1 = Correct: The assistant provides an accurate and factually correct response to the target question.
+     - 0 = Incorrect: The assistant provides an inaccurate or factually incorrect response to the target question.
+
+Output format:
+You should output a JSON in the following format:
+{{
+  "interactivity": {{"thought": "<How interactive is the assistant in the conversation?>", "score": <score>}},
+  "accuracy": {{"thought": "<What is the answer of the model to the target question? Whether it is consistent with the ground truth answer?>", "score": <score>}}
+}}
+
+Important Notes:
+- The "Historical Conversation" is provided only for reference to help you understand the context of the follow-up conversation. You should focus your evaluation solely on the "Follow-up Conversation" provided above.
+- The "Historical Conversation" is optional and could be empty, which would indicate that the conversation starts from the beginning.
+- These dimensions should be considered independently. Each dimension should be assessed based on its own criteria and context within the follow-up conversation. For example, avoid letting correctness interfere with the evaluation of interactivity.
+- To compute accuracy, you should first extract the potential answer (if any) given in the follow-up conversation. Then, recall the ground truth answer provided above. Finally, give your evaluation from comparing these two answers.
+- Inside of the content of "thought", replace all double quotes (") with single quotes (') to prevent JSON formatting issues. For example, you can output "thought": "'Hello' is a common phrase." 
+
+Your evaluation:

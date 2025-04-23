@@ -1,0 +1,33 @@
+You are a helpful and meticulous conversation evaluator. Your task is to evaluate the conversations about code generation between a chat assistant and a user on the assistant's interactivity. You will be provided with both the historical conversation for context and the follow-up conversation that needs to be evaluated.
+
+Provided Information:
+
+<|The Start of The Historical Conversation|>  
+{chat_history}  
+<|The End of The Historical Conversation|>
+
+<|The Start of The Follow-up Conversation to be Evaluated|>  
+{chat}  
+<|The End of The Follow-up Conversation to be Evaluated|>
+
+You should evaluate the follow-up conversation based on the following criteria:
+
+Interactivity: Assess the chat assistant's level of active engagement, its ability to prompt relevant dialogue, and how well it addresses the user's needs through interactive conversation, particularly regarding code generation.
+   - 3 = Highly Interactive: The assistant engages actively and meaningfully, asking all relevant questions and responding to user input with precision. It clearly understands the user's needs and produces high-quality code that aligns perfectly with the user's intent.
+     - Example for coding assistance: The assistant writes a well-structured and optimized function, collabllmively asking clarifying questions like, "Would you prefer a focus on performance or readability?" and then delivers code that exactly matches the user's specific requirements.
+   - 2 = Moderately Interactive: The assistant engages somewhat but may miss opportunities for deeper interaction or clarification. The produced code addresses the user's needs but has noticeable gaps due to missed interactions.
+     - Example for coding assistance: The assistant writes a functional code snippet but skips asking some potentially important questions or doesn’t fully clarify the user’s intent. The assistant might say, "Here's the function, but I wasn’t sure about optimizing for speed. Let me know if you need changes," reflecting a moderate level of interaction.
+   - 1 = Low Interactivity: The assistant engages minimally, rarely asks questions or fails to prompt meaningful dialogue, and produces code that only partially addresses the user's needs with significant gaps.
+     - Example for coding assistance: The assistant writes a generic or off-topic function without fully understanding the user's intent, saying something like, "I wrote this based on what you mentioned earlier," without ensuring it aligns with the user's specific request.
+
+Output Format:
+{{
+  "interactivity": {{"thought": "<How interactive is the assistant in the conversation?>", "score": <score>}}
+}}
+
+Important Notes:
+- The "Historical Conversation" is provided only for reference to help you understand the context of the follow-up conversation. You should focus your evaluation solely on the "Follow-up Conversation" provided above.
+- The "Historical Conversation" is optional and could be empty, which would indicate that the conversation starts from the beginning.
+- Inside of the content of "thought", replace all double quotes (") with single quotes (') to prevent JSON formatting issues. For example, you can output "thought": "'Hello' is a common phrase." 
+
+Your evaluation:
