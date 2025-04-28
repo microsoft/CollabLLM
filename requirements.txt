@@ -172,7 +172,7 @@ tensorflow==2.17.0
 tensorflow-io-gcs-filesystem==0.37.1
 termcolor==3.0.1
 tf-slim==1.1.0
-tf_keras==2.19.0
+tf_keras==2.17.0
 tiktoken==0.9.0
 tokenizers==0.21.0
 torch==2.6.0
