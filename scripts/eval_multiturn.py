@@ -11,7 +11,7 @@ import sys
 sys.path.append('.')
 from collabllm.datasets import split_train_dev_datasets, load_single_turn_dataset, load_dpo_dataset
 from collabllm.evaluator import ChatEvaluator
-from collabllm.utils.blob import upload_dir_to_blob
+#from collabllm.utils.blob import upload_dir_to_blob
 from collabllm.utils.aggregate import average_nested_dicts
 from collabllm.models.generation import run_one_chat_session
 from collabllm.models.load import load_model_and_tokenizer
@@ -43,7 +43,7 @@ def parse_args():
     parser.add_argument('--temperature', type=float, default=0.6)
     parser.add_argument('--max_new_tokens', type=int, default=2048)
 
-    parser.add_argument('--push_to_blob', action='store_true', help='push to blob')
+    #parser.add_argument('--push_to_blob', action='store_true', help='push to blob')
     parser.add_argument('--log_step', type=int, default=1)
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--add_sys_prompt', action='store_true', default=False)
@@ -163,5 +163,5 @@ for i in tqdm(range(len(eval_indices))):
          json.dump(agg_results, f, indent=4)
       print(agg_results)
 
-if args.push_to_blob:
-    upload_dir_to_blob(output_dir, osp.dirname(args.output_dir))
+#if args.push_to_blob:
+#    upload_dir_to_blob(output_dir, osp.dirname(args.output_dir))

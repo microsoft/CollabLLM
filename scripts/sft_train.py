@@ -16,7 +16,7 @@ sys.path.append('.')
 from collabllm.models import get_meta_info_from_model_name, is_unsloth_model_auto
 from collabllm.models.load import load_model_and_tokenizer
 from collabllm.datasets import split_train_dev_datasets
-from collabllm.utils.blob import upload_dir_to_blob
+#from collabllm.utils.blob import upload_dir_to_blob
 from collabllm.utils.dir import keep_levels
 
 
@@ -47,7 +47,7 @@ def parse_args():
 
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--push_to_hub', action='store_true', help='push to hub')
-    parser.add_argument('--push_to_blob', action='store_true', help='push to blob storage')
+    #parser.add_argument('--push_to_blob', action='store_true', help='push to blob storage')
     parser.add_argument('--debug', action='store_true', help='debug mode')
     parser.add_argument('--hf_org', type=str, default='org_name')
     return parser.parse_args()
@@ -206,6 +206,6 @@ if args.push_to_hub:
     trainer.model.push_to_hub(f'{args.hf_org}/sft-model-{surfix}', private=True)
     tokenizer.push_to_hub(f'{args.hf_org}/sft-tokenizer-{surfix}', private=True)
 
-if args.push_to_blob:
-    upload_dir_to_blob(output_dir)
+#if args.push_to_blob:
+#    upload_dir_to_blob(output_dir)
 wandb.finish()

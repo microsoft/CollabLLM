@@ -3,21 +3,25 @@
 # Source shared parameters
 source scripts/config.sh
 
-# Ensure a dataset name is provided as input
-if [ -z "$1" ]; then
-    echo "Usage: $0 <dataset>"
+# Ensure a dataset name and number of GPUs is provided as input
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: $0 <dataset> <num_gpus>"
     exit 1
 fi
 
+DATASET="$1"
+NUM_GPUS="$2"
+
 # Set dataset-specific parameters, start with sft model
-set_dataset_config "$1"
-set_assistant_model "$1" "sft"
+set_dataset_config "$DATASET"
+set_assistant_model "$DATASET" "sft"
 
 RANDOM_SEED=$$
 PORT=$((56410 + RANDOM_SEED % 10))
+DEVICES=$(seq -s, 0 $((NUM_GPUS - 1)))
 
 # CUDA_VISIBLE_DEVICES=1,2,3,4,5,6 torchrun --master_port=$PORT --nnodes=1 --nproc_per_node=6 \
-CUDA_VISIBLE_DEVICES=0,1,2,3,6,7 torchrun --master_port=$PORT --nnodes=1 --nproc_per_node=6 \
+CUDA_VISIBLE_DEVICES=$DEVICES torchrun --master_port=$PORT --nnodes=1 --nproc_per_node=$NUM_GPUS \
     scripts/ppo_train.py \
     --datasets org_name/collabllm-$DATASET \
     --assistant_model_name $ASSISTANT_MODEL_NAME \

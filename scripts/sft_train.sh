@@ -3,21 +3,25 @@
 # Source shared parameters
 source scripts/config.sh
 
-# Ensure a dataset name is provided as input
-if [ -z "$1" ]; then
-    echo "Usage: $0 <dataset>"
+# Ensure a dataset name and number of GPUs is provided as input
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Usage: $0 <dataset> <num_gpus>"
     exit 1
 fi
 
+DATASET="$1"
+NUM_GPUS="$2"
+
 # Set dataset-specific parameters, start with base model
-set_dataset_config "$1"
-set_assistant_model "$1" "base"
+set_dataset_config "$DATASET"
+set_assistant_model "$DATASET" "base"
 
 RANDOM_SEED=$$
 PORT=$((56400 + RANDOM_SEED % 10))
+DEVICES=$(seq -s, 0 $((NUM_GPUS - 1)))
 export TRITON_CACHE_DIR=$OUTPUT_DIR/cache
 
-CUDA_VISIBLE_DEVICES=2,3,4,5 WANDB__SERVICE_WAIT=300 torchrun --master_port=$PORT --nnodes=1 --nproc_per_node=4 \
+CUDA_VISIBLE_DEVICES=$DEVICES WANDB__SERVICE_WAIT=300 torchrun --master_port=$PORT --nnodes=1 --nproc_per_node=$NUM_GPUS \
     scripts/sft_train.py \
     --dataset org_name/collabllm-$DATASET \
     --assistant_model_name $ASSISTANT_MODEL_NAME \

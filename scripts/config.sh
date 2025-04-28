@@ -6,7 +6,9 @@ export USE_SNAP=true
 export USE_GCR=false
 
 # Define the base output directory
-OUTPUT_DIR=/name/project/collabllm/github/outputs
+#OUTPUT_DIR=/name/project/collabllm/github/outputs
+OUTPUT_DIR=$HOME/collabllm/outputs
+mkdir -p $OUTPUT_DIR
 
 # Dataset configurations
 function set_dataset_config() {

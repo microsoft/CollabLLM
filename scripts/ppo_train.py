@@ -22,7 +22,7 @@ from vllm.lora.request import LoRARequest
 sys.path.append('.')
 from collabllm.utils.distributed import init_distributed_mode
 from collabllm.datasets import datasets_info, split_train_dev_datasets
-from collabllm.utils.blob import upload_dir_to_blob
+#from collabllm.utils.blob import upload_dir_to_blob
 from collabllm.models import is_unsloth_model_auto, get_meta_info_from_model_name
 from collabllm.models.load import load_model_and_tokenizer
 from collabllm.core.multithread import get_multiturn_rewards
@@ -74,7 +74,7 @@ def parse_args():
 
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--push_to_hub', action='store_true', help='push to hub')
-    parser.add_argument('--push_to_blob', action='store_true', help='push to blob storage')
+    #parser.add_argument('--push_to_blob', action='store_true', help='push to blob storage')
     parser.add_argument('--debug', action='store_true', help='debug mode')
     parser.add_argument('--hf_org', type=str, default='org_name')
     parser.add_argument("--use_vllm", action="store_true", help="use vllm")
@@ -382,6 +382,6 @@ if args.push_to_hub:
     trainer.push_to_hub(f'{args.hf_org}/ppo-model-{surfix}', private=True)
     tokenizer.push_to_hub(f'{args.hf_org}/ppo-tokenizer-{surfix}', private=True)
 
-if args.push_to_blob:
-    upload_dir_to_blob(output_dir)
+#if args.push_to_blob:
+#    upload_dir_to_blob(output_dir)
 wandb.finish()

@@ -1,6 +1,18 @@
 import os
 import zipfile
 import urllib.request
+
+import tensorflow as tf
+
+# Ensures TF only allocates GPU memory when needed:
+gpus = tf.config.list_physical_devices('GPU')
+if gpus:
+    try:
+        for gpu in gpus:
+            tf.config.experimental.set_memory_growth(gpu, True)
+    except RuntimeError as e:
+        print(e)
+
 from bleurt import score
 from collabllm.metrics.multiturn_metric import MultiturnMetric
 

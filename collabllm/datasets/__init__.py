@@ -8,12 +8,12 @@ from datasets import load_dataset, Dataset, DatasetDict, interleave_datasets
 from collabllm.prompts import SYSTEM_PROMPT
 
 from .abg_coqa import AbgCoQA
-from .asqa import ASQA
-from .paqa import PAQA
-from .ppc import PPC
+#from .asqa import ASQA
+#from .paqa import PAQA
+#from .ppc import PPC
 from .math_hard import MATH
 from .medium import Medium
-from .mtbp import MTBP
+#from .mtbp import MTBP
 from .humaneval import HumanEval
 from .bigcodebench import BigCodeBench
 # ADD NEW DATASET IMPORT ABOVE
@@ -41,11 +41,11 @@ datasets_info = {
         'class': Medium,
         'kwargs': {},
     },
-    'mtbp': {
-        'task': 'code-generation',
-        'class': MTBP,
-        'kwargs': {}
-        },
+    #'mtbp': {
+    #    'task': 'code-generation',
+    #    'class': MTBP,
+    #    'kwargs': {}
+    #    },
     'humaneval': {
         'task': 'code-generation',
         'class': HumanEval,
@@ -173,14 +173,14 @@ def load_multiturn_dataset(dataset_name: str,
                                 add_system_prompt=add_system_prompt, 
                                 **dpo_kwargs)
     
-    if dataset_name == 'asqa':
-        dataset = ASQA(root=root).to_hf_dataset()
-    elif dataset_name == 'paqa':
-        dataset = PAQA(root=root).to_hf_dataset()
-    elif dataset_name == 'abg_coqa':
+    #if dataset_name == 'asqa':
+    #    dataset = ASQA(root=root).to_hf_dataset()
+    #if dataset_name == 'paqa':
+    #    dataset = PAQA(root=root).to_hf_dataset()
+    if dataset_name == 'abg_coqa':
         dataset = AbgCoQA(root=root).to_hf_dataset()
-    elif dataset_name == 'ppc':
-        dataset = PPC().to_hf_dataset()
+    #elif dataset_name == 'ppc':
+    #    dataset = PPC().to_hf_dataset()
     else:
         raise ValueError(f"Invalid dataset name: {dataset_name}")
 
