@@ -174,7 +174,7 @@ termcolor==3.0.1
 tf-slim==1.1.0
 tf_keras==2.17.0
 tiktoken==0.9.0
-tokenizers==0.21.0
+tokenizers==0.21.1
 torch==2.6.0
 torchaudio==2.6.0
 torchvision==0.21.0
@@ -191,7 +191,7 @@ tzdata==2025.2
 urllib3==2.4.0
 uvicorn==0.34.2
 uvloop==0.21.0
-vllm==0.8.4
+vllm==0.8.5
 wandb==0.17.8
 watchfiles==1.0.5
 websockets==15.0.1
