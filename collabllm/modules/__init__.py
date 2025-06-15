@@ -1,2 +1,2 @@
-from .llm_assistant import LLMAssistant
+from .llm_collaborator import LLMCollaborator
 from .user_simulator import UserSimulator

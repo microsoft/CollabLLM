@@ -1,0 +1,60 @@
+[project]
+name = "collabllm"
+version = "0.0.8"
+authors = [
+  { name="Shirley Wu", email="shirwu@stanford.edu" },
+]
+description = "(Oral @ ICML 2025) CollabLLM: From Passive Responders to Active Collaborators"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "accelerate",
+    "bitsandbytes",
+    "datasets",
+    "huggingface-hub",
+    "litellm",
+    "nltk",
+    "numpy",
+    "openai",
+    "pandas",
+    "peft",
+    "python-dotenv",
+    "rich",
+    "scipy",
+    "tenacity",
+    "tiktoken",
+    "tokenizers",
+    "torch",
+    "tqdm",
+    "trl>0.18",
+    "transformers",
+    "vllm",
+    "wandb",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+Homepage = "https://github.com/Wuyxin/collabllm"
+Issues = "https://github.com/Wuyxin/collabllm/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[build-system]
+requires = [
+    "setuptools >= 77.0.3",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+"collabllm" = ["prompts/*.txt"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["collabllm*", "collabllm/*"]
+exclude = ["notebook_tutorials", "outputs", "wandb"]
