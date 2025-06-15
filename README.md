@@ -12,7 +12,7 @@
 
 📢 Oral @ ICML 2025 (1% out of all submissions)
 
-# Overview
+## Overview
 CollabLLM transforms traditional language models from passive responders to active collaborators in multi-turn conversations. This repository provides the complete framework for computing multiturn-aware rewards and training collaborative language models.
 
 ---
@@ -36,14 +36,14 @@ conda install deepspeed mpi4py -c conda-forge
 ### Optional: For customized datasets and metrics
 You may install additional packages (e.g., `pip install bigcodebench matplotlib`) for task-specific metrics or evaluation.
 
-# Quick Start
+## Quick Start
 
 - Lightweight usage: Compute Multiturn-aware Rewards (MRs) for any model responses and construct datasets following `notebook_tutorials/`.
 - Synthetic data generation: Generating high-quality synthetic conversational data following `scripts/engine/build_dataset.py`.
 - Train CollabLLM: Conduct SFT/DPO/PPO models training to maximize MRs following examples under `scripts/train/*.py`.
 
 
-## Add Your Own Task
+### Add Your Own Task
 
 To apply CollabLLM to a new task:
 
@@ -56,7 +56,8 @@ To apply CollabLLM to a new task:
 You can now run data generation, reward computation, and model training using your customized setup.
 
 
-# Citation
+## Citation
+
 If you find our work useful in your research, please cite the following:
 
 ```bibtex
