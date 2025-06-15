@@ -70,7 +70,6 @@ kiwisolver==1.4.7
 lark==1.2.2
 libclang==18.1.1
 llguidance==0.7.19
-llvmlite==0.44.0
 lm-format-enforcer==0.10.11
 Markdown==3.8
 markdown-it-py==3.0.0
@@ -89,7 +88,6 @@ namex==0.0.9
 nest-asyncio==1.6.0
 networkx==3.2.1
 ninja==1.11.1.4
-numba==0.61.2
 numpy==1.26.4
 openai==1.76.0
 opencv-python-headless==4.11.0.86
@@ -135,7 +133,7 @@ pyzmq==26.4.0
 ray==2.43.0
 referencing==0.36.2
 regex==2024.11.6
-requests==2.32.3
+requests==2.32.4
 rich==13.8.0
 rich-toolkit==0.14.3
 rpds-py==0.24.0
