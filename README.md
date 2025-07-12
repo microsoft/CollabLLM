@@ -16,7 +16,7 @@
 
 CollabLLM transforms traditional language models from passive responders to active collaborators in multi-turn conversations. This repository provides the complete framework for computing multiturn-aware rewards and training collaborative language models.
 
-:warning: This code is no longer maintained. Please check the first author's [repository](https://github.com/Wuyxin/collabllm) for the latest updates.
+:warning: Please check the first author's [repository](https://github.com/Wuyxin/collabllm) for the latest updates of CollabLLM.
 
 ---
 ## Installation
