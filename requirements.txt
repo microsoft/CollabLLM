@@ -1,6 +1,6 @@
 accelerate==1.7.0
 aiohappyeyeballs==2.6.1
-aiohttp==3.12.2
+aiohttp==3.12.14
 aiosignal==1.3.2
 airportsdata==20250523
 annotated-types==0.7.0
