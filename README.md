@@ -13,7 +13,10 @@
 📢 Oral @ ICML 2025 (1% out of all submissions)
 
 ## Overview
+
 CollabLLM transforms traditional language models from passive responders to active collaborators in multi-turn conversations. This repository provides the complete framework for computing multiturn-aware rewards and training collaborative language models.
+
+:warning: Please check the first author's [repository](https://github.com/Wuyxin/collabllm) for the latest updates of CollabLLM.
 
 ---
 ## Installation
