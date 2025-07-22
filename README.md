@@ -10,7 +10,7 @@
 
 </div>
 
-📢 Oral @ ICML 2025 (1% out of all submissions)
+📢 Outstanding Paper Award @ ICML 2025
 
 ## Overview
 
